@@ -8,8 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>To Do List</title>
 
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="stylesheet" type="text/css" href="./css/typefaces.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <script src="index.js"></script>
     <script type="text/javascript">
@@ -23,9 +25,41 @@
   <body>
 
     <div class="container">
+      <div class="title">
+        <h1 class="title__main">To Do List</h1>
+        <h2 class="title__secondary">Enhances productivity by a factor of 2! (no guarantees though)</h2>
+      </div>
+
+      <p>Add an item to your list here:</p>
+
+      <div class="addition">
+        <div class="list__item">
+          <input class="item__content addition__input" type="text" name="addition" value="" placeholder="+ list item">
+          <div class="item__buttons">
+            <button id="button--addition" class="button" type="button" name="button">
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="list" class="list">
+        <div class="template">
+          <div id="list__item" class="list__item">
+            <p class="item__content"></p>
+            <div class="item__buttons">
+              <button class="button button--edit" type="button" name="button">
+                <i class="far fa-edit"></i>
+              </button>
+              <button class="button button--remove" type="button" name="button">
+                <i class="far fa-times-circle"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
-
 
   </body>
 

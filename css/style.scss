@@ -16,20 +16,95 @@ $dark-blue: #1b404f;
 $blackish: #031a23;
 $green: #9ffc9f;
 
-* {
-  padding: 0;
-  margin: 0;
-  font-family: sans-serif;
-  font-size: 16px;
-}
+// Value variables
+$bo-ra: 100px;
 
 body {
+  font-family: sans-serif;
+  font-size: 16px;
+
   @include flex-box(center, stretch, row, flex);
   width: 100%;
   height: 100%;
+  background-color: $white;
 }
 
 .container {
+  @include flex-box(flex-start, center, column, flex);
   width: 80%;
-  height: 100px;
+}
+
+.title {
+  @include flex-box(flex-start, center, column, flex);
+  &__main {
+    font-size: 5rem;
+  }
+
+  &__secondary {
+    font-size: 0.8rem;
+  }
+}
+
+.addition {
+  width: 100%;
+
+  &__input {
+    background-color: $white;
+  }
+}
+
+.list {
+  width: 100%;
+
+  &__item {
+    @include flex-box(space-between, center, row, flex);
+    width: 100%;
+    height: 4rem;
+    border: 2px solid black;
+    border-radius: $bo-ra;
+    padding: 1rem;
+    margin: 2rem 0;
+  }
+}
+
+.template {
+  display: none;
+}
+
+.item {
+  &__content {
+    width: 70%;
+    height: 3rem;
+    border: 1px solid black;
+    border-radius: $bo-ra;
+    padding: 0 0 0 2rem;
+    margin: 0 0 0 1rem;
+  }
+
+  &__buttons {
+    @include flex-box(flex-end, center, row, flex);
+    width: 25%;
+  }
+}
+
+.button {
+  @include flex-box(center, center, row, flex);
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 50%;
+  background-color: $white;
+  padding: 0;
+  margin: 1rem;
+  cursor: pointer;
+  border: 1px solid $white;
+  transition: border ease 200ms;
+
+  i {
+    font-size: 1.5rem;
+  }
+
+  &:hover {
+    border: 1px solid black;
+  }
 }
