@@ -34,7 +34,7 @@
 
       <div class="addition">
         <div class="list__item">
-          <input class="item__content addition__input" type="text" name="addition" value="" placeholder="+ list item">
+          <input id="addition__input" class="item__content addition__input" type="text" name="addition" value="" placeholder="+ list item">
           <div class="item__buttons">
             <button id="button--addition" class="button" type="button" name="button">
               <i class="fa fa-plus"></i>
@@ -46,7 +46,9 @@
       <div id="list" class="list">
         <div class="template">
           <div id="list__item" class="list__item">
-            <p class="item__content"></p>
+            <div class="item__content">
+              <p></p>
+            </div>
             <div class="item__buttons">
               <button class="button button--edit" type="button" name="button">
                 <i class="far fa-edit"></i>

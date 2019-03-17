@@ -49,6 +49,10 @@ body {
   display: none; }
 
 .item__content {
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  display: flex;
   width: 70%;
   height: 3rem;
   border: 1px solid black;
@@ -76,10 +80,10 @@ body {
   margin: 1rem;
   cursor: pointer;
   border: 1px solid #f5f5f5;
-  transition: border ease 200ms; }
+  transition: color ease 200ms; }
   .button i {
     font-size: 1.5rem; }
   .button:hover {
-    border: 1px solid black; }
+    color: #137a86; }
 
 /*# sourceMappingURL=style.css.map */
