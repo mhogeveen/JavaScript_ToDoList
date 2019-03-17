@@ -32,11 +32,11 @@
 
       <p>Add an item to your list here:</p>
 
-      <div class="addition">
+      <div class="add">
         <div class="list__item">
-          <input id="addition__input" class="item__content addition__input" type="text" name="addition" value="" placeholder="+ list item">
+          <input id="add__input" class="item__content add__input" type="text" name="add" value="" placeholder="+ list item" onfocus="this.value=''">
           <div class="item__buttons">
-            <button id="button--addition" class="button" type="button" name="button">
+            <button id="button--add" class="button" type="button" name="button">
               <i class="fa fa-plus"></i>
             </button>
           </div>
@@ -47,13 +47,13 @@
         <div class="template">
           <div id="list__item" class="list__item">
             <div class="item__content">
-              <p></p>
+              <p>placecontenthere</p>
             </div>
             <div class="item__buttons">
               <button class="button button--edit" type="button" name="button">
                 <i class="far fa-edit"></i>
               </button>
-              <button class="button button--remove" type="button" name="button">
+              <button id="button--remove" class="button button--remove" type="button" name="button">
                 <i class="far fa-times-circle"></i>
               </button>
             </div>

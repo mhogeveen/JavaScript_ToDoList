@@ -1,31 +1,28 @@
 function activateToDo() {
 
-  let listItem = document.querySelector("#list__item");
   let list = document.querySelector("#list");
-  let addItem = document.querySelector("#button--addition");
-
+  let addItem = document.querySelector("#button--add");
+  let removeItem = document.querySelector("#button--remove");
+  let content = document.querySelector("#add__input");
+  let listItemHtml = document.querySelector("#list__item").innerHTML;
 
   addItem.addEventListener("click", function() {
     let div = document.createElement("div");
-    let content = document.querySelector("#addition__input").value;
+    let contentVal = content.value;
+    let newHTML = listItemHtml.split("placecontenthere").join(contentVal);
 
-    let listItemHtml = `<div class="item__content">\
-      <p>${content}</p>\
-    </div>\
-    <div class="item__buttons">\
-      <button class="button button--edit" type="button" name="button">\
-        <i class="far fa-edit"></i>\
-      </button>\
-      <button class="button button--remove" type="button" name="button">\
-        <i class="far fa-times-circle"></i>\
-      </button>\
-    </div>`;
-
-    console.log(content);
-    div.className = "list__item";
-    div.innerHTML = listItemHtml;
-    list.appendChild(div);
+    if (contentVal) {
+      content.style.border = "1px solid black";
+      div.className = "list__item";
+      div.innerHTML = newHTML;
+      list.appendChild(div);
+    } else {
+      content.style.border = "1px solid red";
+    }
   });
 
-
+  removeItem.addEventListener("click", function() {
+    list.removeChild("#list__item");
+    console.log("hello");
+  });
 }
