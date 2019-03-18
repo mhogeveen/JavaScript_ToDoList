@@ -122,6 +122,22 @@ body {
         left: 0;
         background: #edf0f1; }
 
+#completed {
+  position: relative; }
+  #completed .buttons__complete i {
+    color: #25b99a; }
+  #completed:not(:empty) {
+    padding: 60px 0 0 0; }
+    #completed:not(:empty):before {
+      content: '';
+      width: 150px;
+      height: 1px;
+      background: #d8e5e0;
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      margin: 0 0 0 -75px; }
+
 .buttons__remove, .buttons__complete {
   cursor: pointer; }
   .buttons__remove i, .buttons__complete i {
