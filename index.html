@@ -4,32 +4,55 @@
 
   <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Title -->
     <title>To Do List</title>
 
-    <link rel="stylesheet" type="text/css" href="./resources/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="./resources/css/style.css">
-    <link rel="stylesheet" type="text/css" href="./resources/css/typefaces.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- Meta Information -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="index.js"></script>
-    <script type="text/javascript">
-      document.addEventListener("DOMContentLoaded", function() {
-        activateToDo();
-      });
-    </script>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="./resources/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./resources/css/typefaces.css">
+    <link rel="stylesheet" type="text/css" href="./resources/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
   </head>
 
   <body>
 
     <header class="header">
-      <input class="header__input" type="text" placeholder="New item..">
-      <button class="header__button">
+      <input id="item" class="header__input" type="text" placeholder="New item..">
+      <button id="add" class="header__button">
         <i class="fa fa-plus"></i>
       </button>
     </header>
+
+    <div class="container">
+      <!-- Uncompleted taks -->
+      <ul class="todo">
+        <li>
+          This is an item
+          <div class="todo__buttons">
+            <button>
+
+            </button>
+            <button>
+
+            </button>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Completed tasks -->
+      <!-- <ul class="todo">
+
+      </ul> -->
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="index.js"></script>
 
   </body>
 
