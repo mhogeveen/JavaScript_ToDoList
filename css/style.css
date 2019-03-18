@@ -44,9 +44,6 @@ body {
     padding: 0.5rem;
     margin: 2rem 0; }
 
-.template {
-  display: none; }
-
 .item__content {
   justify-content: flex-start;
   align-items: center;
