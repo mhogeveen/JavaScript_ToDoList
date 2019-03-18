@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>To Do List</title>
 
-    <link rel="stylesheet" type="text/css" href="./css/reset.css">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <link rel="stylesheet" type="text/css" href="./css/typefaces.css">
+    <link rel="stylesheet" type="text/css" href="./resources/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./resources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="./resources/css/typefaces.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <script src="index.js"></script>
@@ -24,43 +24,12 @@
 
   <body>
 
-    <div class="container">
-      <div class="title">
-        <h1 class="title__main">To Do List</h1>
-        <h2 class="title__secondary">Enhances productivity by a factor of 2! (no guarantees though)</h2>
-      </div>
-
-      <p>Add an item to your list here:</p>
-
-      <div class="add">
-        <div class="list__item">
-          <input id="add__input" class="item__content add__input" type="text" name="add" value="" placeholder="+ list item" onfocus="this.value=''">
-          <div class="item__buttons">
-            <button id="button--add" class="button" type="button" name="button">
-              <i class="fa fa-plus"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div id="list" class="list">
-
-        <div id="list__item" class="list__item template">
-          <div class="item__content">
-            <p>placecontenthere</p>
-          </div>
-          <div class="item__buttons">
-            <button class="button button--edit" type="button" name="button">
-              <i class="far fa-edit"></i>
-            </button>
-            <button id="remove1" class="button button--remove" type="button">
-              <i class="far fa-times-circle"></i>
-            </button>
-          </div>
-        </div>
-
-      </div> <!-- #list close -->
-    </div> <!-- .container close -->
+    <header class="header">
+      <input class="header__input" type="text" placeholder="New item..">
+      <button class="header__button">
+        <i class="fa fa-plus"></i>
+      </button>
+    </header>
 
   </body>
 

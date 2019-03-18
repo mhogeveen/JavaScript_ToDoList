@@ -1,4 +1,4 @@
-// sass --watch resources/css/style.scss:resources/css/style.css
+// sass --watch css/style.scss:css/style.css
 
 
 // Mixins
@@ -93,9 +93,4 @@ $green: #9ffc9f;
     -o-appearance: none;
     appearance: none;
   }
-}
-
-.fa-plus {
-  font-size: 16px;
-  color: #25b99a;
 }
