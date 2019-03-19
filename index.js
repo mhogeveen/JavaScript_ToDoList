@@ -122,3 +122,17 @@ function addItemToDOM(text, completed) {
 
   list.insertBefore(item, list.childNodes[0]);
 }
+
+let menuButtons = document.querySelectorAll('.button');
+
+menuButtons.forEach(function(button) {
+  button.addEventListener('click', function() {
+    if (this.classList.contains('button--itemMenu')) {
+      document.querySelector('.menu-panel').style.right = '0';
+      document.querySelector('.list-panel').classList.add('opacity');
+    } else if (this.classList.contains('button--listMenu')) {
+      document.querySelector('.menu-panel').style.right = '-80%';
+      document.querySelector('.list-panel').classList.remove('opacity');
+    }
+  });
+});

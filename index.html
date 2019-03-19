@@ -22,13 +22,13 @@
   <body>
 
     <div class="list-panel">
-      <header class="header">
 
+      <header class="header">
         <input id="item" class="header__input" type="text" placeholder="New item..">
-        <button id="add" class="header__button">
+        <button id="add" class="button button--itemAdd">
           <i class="fa fa-plus"></i>
         </button>
-        <button id="menu" class="header__menu">
+        <button class="button button--itemMenu">
           <i class="fas fa-bars"></i>
         </button>
       </header>
@@ -40,6 +40,21 @@
         <!-- Completed tasks -->
         <ul class="todo" id="completed"></ul>
       </div>
+    </div>
+
+    <div class="menu-panel">
+
+      <div class="menu">
+        <input id="categorie" class="menu__input" type="text" placeholder="New list..">
+        <button id="cat-add" class="button button--listAdd">
+          <i class="fa fa-plus"></i>
+        </button>
+        <button class="button button--listMenu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+
     </div>
 
     <!-- JavaScript -->
