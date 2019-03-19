@@ -2,6 +2,10 @@
   box-sizing: border-box; }
 
 body {
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: row;
+  display: flex;
   font-family: 'Roboto', sans-serif;
   background: #edf0f1;
   padding: 80px 0 0 0; }
@@ -70,17 +74,31 @@ body {
       color: #25b99a; }
 
 .container {
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
   width: 100%;
-  float: left;
   padding: 15px; }
+  @media only screen and (min-width: 650px) {
+    .container {
+      width: 80%; } }
 
 .todo {
-  width: 100%;
-  float: left; }
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  width: 100%; }
+  @media only screen and (min-width: 1000px) {
+    .todo {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: stretch;
+      flex-wrap: wrap; } }
   .todo li {
     width: 100%;
     min-height: 50px;
-    float: left;
     font-size: 14px;
     font-weight: 500;
     color: #444;
@@ -91,8 +109,17 @@ body {
     box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.1);
     margin: 0 0 10px 0;
     padding: 14px 100px 14px 14px; }
+    @media only screen and (min-width: 1000px) {
+      .todo li {
+        margin: 10px; } }
     .todo li:last-of-type {
       margin: 0; }
+      @media only screen and (min-width: 1000px) {
+        .todo li:last-of-type {
+          margin: 10px; } }
+    @media only screen and (min-width: 1000px) {
+      .todo li {
+        width: 47%; } }
   .todo__buttons {
     width: 100px;
     height: 50px;
