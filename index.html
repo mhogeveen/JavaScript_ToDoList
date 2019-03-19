@@ -21,25 +21,26 @@
 
   <body>
 
-    <header class="header">
+    <div class="list-panel">
+      <header class="header">
 
-      <input id="item" class="header__input" type="text" placeholder="New item..">
-      <button id="add" class="header__button">
-        <i class="fa fa-plus"></i>
-      </button>
-      <button id="menu" class="header__menu">
-        <i class="fas fa-bars"></i>
-      </button>
-    </header>
+        <input id="item" class="header__input" type="text" placeholder="New item..">
+        <button id="add" class="header__button">
+          <i class="fa fa-plus"></i>
+        </button>
+        <button id="menu" class="header__menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </header>
 
-    <div class="container">
-      <!-- Uncompleted taks -->
-      <ul class="todo" id="todo"></ul>
+      <div class="container">
+        <!-- Uncompleted taks -->
+        <ul class="todo" id="todo"></ul>
 
-      <!-- Completed tasks -->
-      <ul class="todo" id="completed"></ul>
+        <!-- Completed tasks -->
+        <ul class="todo" id="completed"></ul>
+      </div>
     </div>
-
 
     <!-- JavaScript -->
     <script src="index.js"></script>

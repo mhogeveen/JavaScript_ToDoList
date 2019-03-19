@@ -26,6 +26,12 @@ body {
   font-family: 'Roboto', sans-serif;
   background: #edf0f1;
   padding: 80px 0 0 0;
+  width: 100%;
+}
+
+.list-panel {
+  @include flex-box(center, stretch, row, flex);
+  width: 100%;
 }
 
 .header {
