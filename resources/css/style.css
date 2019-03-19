@@ -189,18 +189,12 @@ body {
     transition: color 200ms ease; }
 .buttons__remove i {
   color: #c0cecb; }
-@media only screen and (max-width: 1000px) {
-  .buttons__remove:active i {
-    color: #e85656; } }
-@media only screen and (min-width: 1000px) {
+@media (hover: hover) {
   .buttons__remove:hover i {
     color: #e85656; } }
 .buttons__complete i {
   color: #c0c3cb; }
-@media only screen and (max-width: 1000px) {
-  .buttons__complete:active i {
-    color: #25b99a; } }
-@media only screen and (min-width: 1000px) {
+@media (hover: hover) {
   .buttons__complete:hover i {
     color: #25b99a; } }
 
