@@ -164,6 +164,8 @@ body {
 #completed {
   position: relative;
   padding: 60px 0 0 0; }
+  #completed li {
+    color: #8a8a8a; }
   #completed .buttons__complete i {
     color: #25b99a; }
   #completed:before {
