@@ -1,5 +1,5 @@
-
-let data = {
+// Set data object for storage of todo and completed values
+let data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem('todoList')) :  {
   todo: [],
   completed: [],
 };
@@ -8,17 +8,49 @@ let data = {
 let removeIcon = '<i class="far fa-trash-alt"></i>';
 let completeIcon = '<i class="fas fa-check"></i>';
 
+renderTodoList();
+
 // User clicked on the add button
 // If there is any text inside the item field, add that text to the todo list
 document.querySelector('#add').addEventListener('click', function() {
   let value = document.querySelector('#item').value;
   if (value) {
-    addItemTodo(value);
-    document.querySelector('#item').value = '';
-
-    data.todo.push(value);
+    addItem(value);
   }
 });
+
+document.querySelector('#item').addEventListener('keydown', function(event) {
+  let value = this.value;
+  if (event.code === 'Enter' && value) {
+    addItem(value);
+  }
+});
+
+function addItem(value) {
+  addItemToDOM(value);
+  document.querySelector('#item').value = '';
+
+  data.todo.push(value);
+  dataObjectUpdated();
+}
+
+function renderTodoList() {
+  if (!data.todo.length && !data.completed.length) return;
+
+  for (let i = 0; i < data.todo.length; i++) {
+    let value = data.todo[i];
+    addItemToDOM(value);
+  }
+
+  for (let j = 0; j < data.completed.length; j++) {
+    let value = data.completed[j];
+    addItemToDOM(value, true);
+  }
+}
+
+function dataObjectUpdated() {
+  localStorage.setItem('todoList', JSON.stringify(data));
+}
 
 function removeItem() {
   let item = this.parentNode.parentNode;
@@ -31,6 +63,8 @@ function removeItem() {
   } else {
     data.completed.splice(data.completed.indexOf(value), 1);
   }
+
+  dataObjectUpdated();
 
   parent.removeChild(item);
 }
@@ -49,16 +83,18 @@ function completeItem() {
     data.todo.push(value);
   }
 
+  dataObjectUpdated();
+
   // Check if the item should be added to the completed list or re-added to the todo list
-  let target = (id === 'todo') ? document.querySelector('#completed'):document.querySelector('#todo');
+  let target = (id === 'todo') ? document.querySelector('#completed') : document.querySelector('#todo');
 
   parent.removeChild(item);
   target.insertBefore(item, target.childNodes[0]);
 }
 
 // Adds a new item to the todo list
-function addItemTodo(text) {
-  let list = document.querySelector('#todo');
+function addItemToDOM(text, completed) {
+  let list = (completed) ? document.querySelector('#completed') : document.querySelector('#todo');
 
   let item = document.createElement('li');
   item.innerText = text;
