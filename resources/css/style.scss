@@ -264,8 +264,16 @@ body {
       color: #c0cecb;
     }
 
-    &:hover i {
-      color: #e85656;
+    @media only screen and (max-width: 1000px) {
+      &:active i {
+        color: #e85656;
+      }
+    }
+
+    @media only screen and (min-width: 1000px) {
+      &:hover i {
+        color: #e85656;
+      }
     }
   }
 
@@ -274,8 +282,16 @@ body {
       color: #c0c3cb;
     }
 
-    &:hover i {
-      color: #25b99a;
+    @media only screen and (max-width: 1000px) {
+      &:active i {
+        color: #25b99a;
+      }
+    }
+
+    @media only screen and (min-width: 1000px) {
+      &:hover i {
+        color: #25b99a;
+      }
     }
   }
 }
