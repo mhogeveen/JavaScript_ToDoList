@@ -122,21 +122,34 @@ body {
         left: 0;
         background: #edf0f1; }
 
+#todo:after,
+#completed:after {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: #aaa; }
+
+#todo:empty:after {
+  content: 'You have nothing to do.';
+  margin: 15px 0 0 0; }
+
 #completed {
-  position: relative; }
+  position: relative;
+  padding: 60px 0 0 0; }
   #completed .buttons__complete i {
     color: #25b99a; }
-  #completed:not(:empty) {
-    padding: 60px 0 0 0; }
-    #completed:not(:empty):before {
-      content: '';
-      width: 150px;
-      height: 1px;
-      background: #d8e5e0;
-      position: absolute;
-      top: 30px;
-      left: 50%;
-      margin: 0 0 0 -75px; }
+  #completed:before {
+    content: '';
+    width: 150px;
+    height: 1px;
+    background: #d8e5e0;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    margin: 0 0 0 -75px; }
+  #completed:empty:after {
+    content: 'You have yet to complete any tasks.'; }
 
 .buttons__remove, .buttons__complete {
   cursor: pointer; }

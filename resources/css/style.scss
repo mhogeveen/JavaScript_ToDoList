@@ -1,4 +1,4 @@
-// sass --watch css/style.scss:css/style.css
+// sass --watch resources/css/style.scss:resources/css/style.css
 
 
 // Mixins
@@ -173,27 +173,50 @@ body {
   }
 }
 
+#todo,
+#completed {
+  &:after {
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+  }
+}
+
+#todo {
+  &:empty {
+    &:after {
+      content: 'You have nothing to do.';
+      margin: 15px 0 0 0;
+    }
+  }
+}
+
 #completed {
   position: relative;
-  
+  padding: 60px 0 0 0;
+
   .buttons__complete {
     i {
       color: #25b99a;
     }
   }
 
-  &:not(:empty) {
-    padding: 60px 0 0 0;
+  &:before {
+    content: '';
+    width: 150px;
+    height: 1px;
+    background: #d8e5e0;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    margin: 0 0 0 -75px;
+  }
 
-    &:before {
-      content: '';
-      width: 150px;
-      height: 1px;
-      background: #d8e5e0;
-      position: absolute;
-      top: 30px;
-      left: 50%;
-      margin: 0 0 0 -75px;
+  &:empty {
+    &:after {
+      content: 'You have yet to complete any tasks.';
     }
   }
 }
