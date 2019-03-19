@@ -1,3 +1,9 @@
+
+let data = {
+  todo: [],
+  completed: [],
+};
+
 // Remove and complete icons HTML
 let removeIcon = '<i class="far fa-trash-alt"></i>';
 let completeIcon = '<i class="fas fa-check"></i>';
@@ -9,12 +15,22 @@ document.querySelector('#add').addEventListener('click', function() {
   if (value) {
     addItemTodo(value);
     document.querySelector('#item').value = '';
+
+    data.todo.push(value);
   }
 });
 
 function removeItem() {
   let item = this.parentNode.parentNode;
   let parent = item.parentNode;
+  let id = parent.id;
+  let value = item.innerText;
+
+  if (id === 'todo') {
+    data.todo.splice(data.todo.indexOf(value), 1);
+  } else {
+    data.completed.splice(data.completed.indexOf(value), 1);
+  }
 
   parent.removeChild(item);
 }
@@ -23,6 +39,15 @@ function completeItem() {
   let item = this.parentNode.parentNode;
   let parent = item.parentNode;
   let id = parent.id;
+  let value = item.innerText;
+
+  if (id === 'todo') {
+    data.todo.splice(data.todo.indexOf(value), 1);
+    data.completed.push(value);
+  } else {
+    data.completed.splice(data.completed.indexOf(value), 1);
+    data.todo.push(value);
+  }
 
   // Check if the item should be added to the completed list or re-added to the todo list
   let target = (id === 'todo') ? document.querySelector('#completed'):document.querySelector('#todo');
@@ -61,62 +86,3 @@ function addItemTodo(text) {
 
   list.insertBefore(item, list.childNodes[0]);
 }
-
-
-
-
-
-// !!!!!! This was my own attempte at writing the code!!!!!!
-// function activateToDo() {
-//
-//   let button = document.querySelector('button');
-//   let input = document.querySelector('input');
-//   let ul = document.querySelector('ul');
-//   let item = document.querySelectorAll('li');
-//
-//   function inputLength() {
-//     return input.value.length;
-//   }
-//
-//   function listLength() {
-//     return item.length;
-//   }
-//
-//   function createListElement() {
-//     let li = document.createElement('li');
-//     li.appendChild(document.createTextNode(input.value));
-//     ul.appendChild(li);
-//     input.value = '';
-//
-//     function complete() {
-//       li.classList.toggle('complete');
-//     }
-//
-//     li.addEventListener('click', complete());
-//
-//     let deleteButton = document.createElement('button');
-//     deleteButton.appendChild(document.createTextNode('X'));
-//     li.appendChild(deleteButton);
-//     deleteButton.addEventListener('click', deleteItem);
-//
-//     function deleteItem() {
-//       li.classList.add('delete');
-//     }
-//   }
-//
-//   function addListAfterClick() {
-//     if (inputLength() > 0) {
-//       createListElement();
-//     }
-//   }
-//
-//   function addListAfterKeypress(event) {
-//     if (inputLength() > 0 && event.keypress === 13) {
-//       createListElement();
-//     }
-//   }
-//
-//   button.addEventListener('click', addListAfterClick());
-//
-//   input.addEventListener('keypress', addListAfterKeypress());
-// }
