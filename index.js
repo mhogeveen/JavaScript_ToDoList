@@ -26,12 +26,31 @@ document.querySelector('#item').addEventListener('keydown', function(event) {
   }
 });
 
+document.querySelector('#cat-add').addEventListener('click', function() {
+  let value = document.querySelector('#categorie').value;
+  if (value) {
+    addList(value);
+  }
+});
+
+document.querySelector('#categorie').addEventListener('keydown', function(event) {
+  let value = this.value;
+  if (event.code === 'Enter' && value) {
+    addList(value);
+  }
+});
+
 function addItem(value) {
   addItemToDOM(value);
   document.querySelector('#item').value = '';
 
   data.todo.push(value);
   dataObjectUpdated();
+}
+
+function addList(value) {
+  addListToDOM(value);
+  document.querySelector('#categorie').value = '';
 }
 
 function renderTodoList() {
@@ -65,6 +84,19 @@ function removeItem() {
   }
 
   dataObjectUpdated();
+
+  parent.removeChild(item);
+}
+
+function removeList() {
+  let item = this.parentNode.parentNode;
+  let parent = item.parentNode;
+  let id = parent.id;
+  let value = item.innerText;
+
+  // if (id === 'list') {
+  //
+  // }
 
   parent.removeChild(item);
 }
@@ -119,6 +151,28 @@ function addItemToDOM(text, completed) {
   buttons.appendChild(remove);
   buttons.appendChild(complete);
   item.appendChild(buttons);
+
+  list.insertBefore(item, list.childNodes[0]);
+}
+
+function addListToDOM(text) {
+  let list = document.querySelector('#list');
+
+  let item = document.createElement('li');
+  item.innerText = text;
+
+  let button = document.createElement('div');
+  button.classList.add('list__buttons');
+
+  let remove = document.createElement('button');
+  remove.classList.add('buttons__remove');
+  remove.innerHTML = removeIcon;
+
+  // Add event listener for removing a list
+  remove.addEventListener('click', removeList);
+
+  button.appendChild(remove);
+  item.appendChild(button);
 
   list.insertBefore(item, list.childNodes[0]);
 }
