@@ -4,11 +4,16 @@ let data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
   completed: [],
 };
 
+let lists = (localStorage.getItem('lists')) ? JSON.parse(localStorage.getItem('lists')) : {
+  lists: [],
+};
+
 // Remove and complete icons HTML
 let removeIcon = '<i class="far fa-trash-alt"></i>';
 let completeIcon = '<i class="fas fa-check"></i>';
 
 renderTodoList();
+renderListsList();
 
 // User clicked on the add button
 // If there is any text inside the item field, add that text to the todo list
@@ -26,6 +31,8 @@ document.querySelector('#item').addEventListener('keydown', function(event) {
   }
 });
 
+// User clicked on the cat-add button
+// If there is any text inside the categorie field, add that text to the list list
 document.querySelector('#cat-add').addEventListener('click', function() {
   let value = document.querySelector('#categorie').value;
   if (value) {
@@ -51,6 +58,10 @@ function addItem(value) {
 function addList(value) {
   addListToDOM(value);
   document.querySelector('#categorie').value = '';
+
+  lists.lists.push(value);
+  listsObjectUpdated();
+  console.log(lists);
 }
 
 function renderTodoList() {
@@ -67,8 +78,21 @@ function renderTodoList() {
   }
 }
 
+function renderListsList() {
+  if (!lists.lists.length) return;
+
+  for (let i = 0; i < lists.lists.length; i++) {
+    let value = lists.lists[i];
+    addListToDOM();
+  }
+}
+
 function dataObjectUpdated() {
   localStorage.setItem('todoList', JSON.stringify(data));
+}
+
+function listsObjectUpdated() {
+  localStorage.setItem('lists', JSON.stringify(lists));
 }
 
 function removeItem() {
@@ -94,9 +118,11 @@ function removeList() {
   let id = parent.id;
   let value = item.innerText;
 
-  // if (id === 'list') {
-  //
-  // }
+  if (id === 'list') {
+    lists.lists.splice(lists.lists.indexOf(value), 1);
+  }
+
+  listsObjectUpdated();
 
   parent.removeChild(item);
 }

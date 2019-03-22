@@ -1,6 +1,10 @@
 * {
   box-sizing: border-box; }
 
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent; }
+
 body {
   justify-content: center;
   align-items: stretch;
@@ -96,7 +100,7 @@ body {
   flex-direction: column;
   display: flex;
   width: 100%;
-  padding: 15px; }
+  padding: 0 15px; }
   @media only screen and (min-width: 650px) {
     .container {
       width: 80%; } }
@@ -127,22 +131,11 @@ body {
     border-radius: 5px;
     position: relative;
     box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.1);
-    margin: 0 0 10px 0; }
+    margin: 10px 0 0 0; }
     @media only screen and (min-width: 1000px) {
       .todo li,
       .list li {
-        margin: 10px; } }
-    .todo li:last-of-type,
-    .list li:last-of-type {
-      margin: 0; }
-      @media only screen and (min-width: 1000px) {
-        .todo li:last-of-type,
-        .list li:last-of-type {
-          margin: 10px; } }
-    @media only screen and (min-width: 1000px) {
-      .todo li,
-      .list li {
-        width: 47%; } }
+        width: 46%; } }
   .todo__buttons,
   .list__buttons {
     height: 50px;
@@ -178,18 +171,21 @@ body {
     left: 0;
     background: #edf0f1; }
 
-.list li {
-  padding: 14px 50px 14px 14px; }
-.list__buttons {
-  width: 50px; }
-  .list__buttons button:before {
-    content: '';
-    width: 1px;
-    height: 30px;
-    position: absolute;
-    top: 10px;
-    left: 0;
-    background: #edf0f1; }
+.list {
+  overflow-y: scroll; }
+  .list li {
+    padding: 14px 50px 14px 14px;
+    cursor: pointer; }
+  .list__buttons {
+    width: 50px; }
+    .list__buttons button:before {
+      content: '';
+      width: 1px;
+      height: 30px;
+      position: absolute;
+      top: 10px;
+      left: 0;
+      background: #edf0f1; }
 
 #todo:after,
 #completed:after,
@@ -225,7 +221,8 @@ body {
     left: 50%;
     margin: 0 0 0 -75px; }
   #completed:empty:after {
-    content: 'You have yet to complete any tasks.'; }
+    content: 'You have yet to complete any tasks.';
+    margin: 0 0 15px 0; }
 
 .buttons__remove, .buttons__complete {
   cursor: pointer; }
@@ -268,6 +265,7 @@ body {
   flex-direction: column;
   display: flex;
   width: 80%;
+  height: 100%;
   background: #edf0f1;
   box-shadow: 0px 2px 4px rgba(44, 62, 80, 0.15); }
 
