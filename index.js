@@ -124,15 +124,21 @@ function addItemToDOM(text, completed) {
 }
 
 let menuButtons = document.querySelectorAll('.button');
+let panelCover = document.querySelector('.panel__cover');
 
 menuButtons.forEach(function(button) {
   button.addEventListener('click', function() {
     if (this.classList.contains('button--itemMenu')) {
       document.querySelector('.menu-panel').style.right = '0';
-      document.querySelector('.list-panel').classList.add('opacity');
+      document.querySelector('.list-panel').style.opacity = '0.5';
     } else if (this.classList.contains('button--listMenu')) {
-      document.querySelector('.menu-panel').style.right = '-80%';
-      document.querySelector('.list-panel').classList.remove('opacity');
+      document.querySelector('.menu-panel').style.right = '-100%';
+      document.querySelector('.list-panel').style.opacity = '1';
     }
   });
+});
+
+panelCover.addEventListener('click', function() {
+  document.querySelector('.menu-panel').style.right = '-100%';
+  document.querySelector('.list-panel').style.opacity = '1';
 });
