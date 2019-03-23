@@ -89,6 +89,18 @@ function completeItem() {
 
 }
 
+function activeList() {
+  let item = this;
+  let hasID = document.querySelector('#activeList');
+  console.log(hasID);
+  if (hasID) {
+    hasID.id = '';
+    this.id = 'activeList';
+  } else {
+    this.id = 'activeList';
+  }
+}
+
 
 // Adds a new item to the todo list
 function addItemToDOM(text, completed) {
@@ -137,6 +149,9 @@ function addListToDOM(text) {
 
   // Add event listener for removing a list
   remove.addEventListener('click', removeList);
+
+  // Add event listener for targeting a list
+  item.addEventListener('click', activeList);
 
   button.appendChild(remove);
   item.appendChild(button);
