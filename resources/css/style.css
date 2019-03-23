@@ -21,7 +21,7 @@ body {
   flex-direction: row;
   display: flex;
   width: 100%;
-  opacity: 1;
+  opacity: 0.5;
   transition: opacity 200ms ease; }
 
 .header {
@@ -93,6 +93,30 @@ body {
     color: #25b99a; }
   .button--listAdd i, .button--listMenu i {
     color: #ff6833; }
+
+.alert {
+  opacity: 0;
+  position: absolute;
+  right: 83px;
+  top: 78px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 5px;
+  transition: opacity 200ms ease; }
+  .alert__text {
+    color: #ff6833;
+    font-size: 12px;
+    font-weight: 600; }
+  .alert::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: -5px;
+    right: 22px;
+    border-left: 5px solid rgba(255, 255, 255, 0);
+    border-right: 5px solid rgba(255, 255, 255, 0);
+    border-bottom: 5px solid #fff; }
 
 .container {
   justify-content: flex-start;
@@ -251,11 +275,11 @@ body {
   display: flex;
   position: fixed;
   top: 0;
-  right: -100%;
+  right: 0;
   width: 100%;
   height: 100%;
   z-index: 10;
-  transition: right 200ms ease; }
+  transition: right 300ms ease; }
 
 .panel__cover {
   width: 20%; }
