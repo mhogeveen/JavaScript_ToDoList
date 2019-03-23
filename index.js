@@ -5,6 +5,8 @@ let data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
 let removeIcon = '<i class="far fa-trash-alt"></i>';
 let completeIcon = '<i class="fas fa-check"></i>';
 
+renderLists();
+
 // If there is any text inside the item field, add that text to the todo list of it's own list object
 // User clicked on the add button
 document.querySelector('#add').addEventListener('click', function() {
@@ -58,12 +60,17 @@ function addList(value) {
   console.log(data);
 }
 
-function renderTodoList() {
+function renderTodo() {
 
 }
 
-function renderListsList() {
+function renderLists() {
+  if (!Object.keys(data).length) return;
 
+  for (let i = 0; i < Object.keys(data).length; i++) {
+    let value = Object.keys(data)[i];
+    addListToDOM(value);
+  }
 }
 
 function dataObjectUpdated() {
