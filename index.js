@@ -83,7 +83,7 @@ function renderListsList() {
 
   for (let i = 0; i < lists.lists.length; i++) {
     let value = lists.lists[i];
-    addListToDOM();
+    addListToDOM(value);
   }
 }
 
