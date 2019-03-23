@@ -95,7 +95,7 @@ body {
     color: #ff6833; }
 
 .alert {
-  opacity: 0;
+  display: none;
   position: absolute;
   right: 83px;
   top: 78px;

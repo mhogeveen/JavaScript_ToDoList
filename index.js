@@ -16,18 +16,27 @@ document.querySelector('#add').addEventListener('click', function() {
 
 // User pressed the enter key
 document.querySelector('#item').addEventListener('keydown', function(event) {
-
+  let value = this.value;
+  if (event.code === 'Enter' && value) {
+    addItem(value);
+  }
 });
 
 // If there is any text inside the categorie field, add that text to the todo list of it's own list object
 // User clicked on the categorie button
 document.querySelector('#cat-add').addEventListener('click', function() {
-
+  let value = document.querySelector('#categorie').value;
+  if (value) {
+    addList(value);
+  }
 });
 
 // User pressed the enter key
 document.querySelector('#categorie').addEventListener('keydown', function(event) {
-
+  let value = this.value;
+  if (event.code === 'Enter' && value) {
+    addList(value);
+  }
 });
 
 function addItem(value) {
@@ -36,7 +45,17 @@ function addItem(value) {
 }
 
 function addList(value) {
+  addListToDOM(value);
+  let objectName = value;
+  document.querySelector('#categorie').value = '';
 
+  data[objectName] = {
+    todo: [],
+    completed: [],
+  }
+
+  dataObjectUpdated();
+  console.log(data);
 }
 
 function renderTodoList() {
@@ -48,11 +67,7 @@ function renderListsList() {
 }
 
 function dataObjectUpdated() {
-
-}
-
-function listsObjectUpdated() {
-
+  localStorage.setItem('todoList', JSON.stringify(data));
 }
 
 function removeItem() {
@@ -124,12 +139,7 @@ function addListToDOM(text) {
 
 // Check if data object is empty
 function isEmpty(obj) {
-  for (let prop in obj) {
-    if (obj.hasOwnProperty(prop)) {
-      return false;
-    }
-  }
-  return true;
+  return Object.keys(data).length === 0;
 }
 
 // Menu sliding functionality
@@ -143,7 +153,7 @@ menuButtons.forEach(function(button) {
       document.querySelector('.list-panel').style.opacity = '0.5';
     } else if (this.classList.contains('button--listMenu')) {
       if (isEmpty(data)) {
-        document.querySelector('.alert').style.opacity = '1';
+        document.querySelector('.alert').style.display = 'block';
       } else {
         document.querySelector('.menu-panel').style.right = '-100%';
         document.querySelector('.list-panel').style.opacity = '1';
@@ -154,7 +164,7 @@ menuButtons.forEach(function(button) {
 
 panelCover.addEventListener('click', function() {
   if (isEmpty(data)) {
-    document.querySelector('.alert').style.opacity = '1';
+    document.querySelector('.alert').style.display = 'block';
   } else {
     document.querySelector('.menu-panel').style.right = '-100%';
     document.querySelector('.list-panel').style.opacity = '1';
