@@ -48,6 +48,17 @@ document.querySelector('#categorie').addEventListener('keydown', function(event)
   }
 });
 
+// Update the data object
+function dataObjectUpdated() {
+  localStorage.setItem('todoList', JSON.stringify(data));
+}
+
+// Check if data object is empty
+function isEmpty(obj) {
+  return Object.keys(data).length === 0;
+}
+
+// Add item to list
 function addItem(value) {
   addItemToDOM(value);
   document.querySelector('#item').value = '';
@@ -59,8 +70,10 @@ function addItem(value) {
   });
 
   console.log(data);
+  dataObjectUpdated();
 }
 
+// Add list to menu
 function addList(value) {
   addListToDOM(value);
   let objectName = value;
@@ -82,50 +95,7 @@ function addList(value) {
   unrenderTodo();
 }
 
-function renderTodo() {
-  Object.keys(data).forEach(function(list) {
-    if (data[list].active === true) {
-      if (!data[list].todo.length && !data[list].completed.length) return;
-
-      for (let i = 0; i < data[list].todo.length; i++) {
-        let value = data[list].todo[i];
-        addItemToDOM(value);
-      }
-
-      for (let j = 0; j < data[list].completed.length; j++) {
-        let value = data[list].completed[j];
-        addItemToDOM(value, true);
-      }
-    }
-  });
-}
-
-function unrenderTodo() {
-  let todo = document.querySelector('#todo');
-  let completed = document.querySelector('#completed');
-
-  while (todo.firstChild) {
-    todo.removeChild(todo.firstChild);
-  }
-
-  while (completed.firstChild) {
-    completed.removeChild(completed.firstChild);
-  }
-}
-
-function renderLists() {
-  if (!Object.keys(data).length) return;
-
-  for (let i = 0; i < Object.keys(data).length; i++) {
-    let value = Object.keys(data)[i];
-    addListToDOM(value);
-  }
-}
-
-function dataObjectUpdated() {
-  localStorage.setItem('todoList', JSON.stringify(data));
-}
-
+// Remove item from list
 function removeItem() {
   let item = this.parentNode.parentNode;
   let parent = item.parentNode;
@@ -147,6 +117,7 @@ function removeItem() {
   parent.removeChild(item);
 }
 
+// Complete item or re-add to todo section of list
 function completeItem() {
   let item = this.parentNode.parentNode;
   let parent = item.parentNode;
@@ -174,6 +145,7 @@ function completeItem() {
   target.insertBefore(item, target.childNodes[0]);
 }
 
+// Remove list from menu
 function removeList() {
   let item = this.parentNode.parentNode;
   let parent = item.parentNode;
@@ -211,7 +183,6 @@ function activeList() {
   unrenderTodo();
   renderTodo();
 }
-
 
 // Adds a new item to the todo list
 function addItemToDOM(text, completed) {
@@ -283,9 +254,53 @@ function addListToDOM(text) {
   list.insertBefore(item, list.childNodes[0]);
 }
 
-// Check if data object is empty
-function isEmpty(obj) {
-  return Object.keys(data).length === 0;
+// Render list contents
+function renderTodo() {
+  Object.keys(data).forEach(function(list) {
+    if (data[list].active === true) {
+      if (!data[list].todo.length && !data[list].completed.length) return;
+
+      for (let i = 0; i < data[list].todo.length; i++) {
+        let value = data[list].todo[i];
+        addItemToDOM(value);
+      }
+
+      for (let j = 0; j < data[list].completed.length; j++) {
+        let value = data[list].completed[j];
+        addItemToDOM(value, true);
+      }
+    }
+  });
+}
+
+// Unrender list contents
+function unrenderTodo() {
+  let todo = document.querySelector('#todo');
+  let completed = document.querySelector('#completed');
+
+  while (todo.firstChild) {
+    todo.removeChild(todo.firstChild);
+  }
+
+  while (completed.firstChild) {
+    completed.removeChild(completed.firstChild);
+  }
+}
+
+// Render lists
+function renderLists() {
+  if (!Object.keys(data).length) return;
+
+  for (let i = 0; i < Object.keys(data).length; i++) {
+    if (i === Object.keys(data).length - 1) {
+      let value = Object.keys(data)[i];
+      data[value].active = true;
+      addListToDOM(value);
+    } else {
+      let value = Object.keys(data)[i];
+      addListToDOM(value);
+    }
+  }
 }
 
 // Menu sliding functionality
