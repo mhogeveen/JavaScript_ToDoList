@@ -267,9 +267,8 @@ function addListToDOM(text) {
 function renderTodo() {
   Object.keys(data).forEach(function(list) {
     if (data[list].active === true) {
-      if (!data[list].todo.length && !data[list].completed.length) return;
-
       title.innerText = data[list].title;
+      if (!data[list].todo.length && !data[list].completed.length) return;
 
       for (let i = 0; i < data[list].todo.length; i++) {
         let value = data[list].todo[i];
