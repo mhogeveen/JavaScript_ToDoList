@@ -121,6 +121,26 @@ function completeItem() {
   let parent = item.parentNode;
   let id = parent.id;
   let value = item.innerText;
+
+  Object.keys(data).forEach(function(list) {
+    if (data[list].active === true) {
+      if (id === 'todo') {
+        data[list].todo.splice(data[list].todo.indexOf(value), 1);
+        data[list].completed.push(value);
+      } else {
+        data[list].completed.splice(data[list].completed.indexOf(value), 1);
+        data[list].todo.push(value);
+      }
+    }
+  });
+
+  dataObjectUpdated();
+
+  // Check if the item should be added to the completed list or re-added to the todo list
+  let target = (id === 'todo') ? document.querySelector('#completed') : document.querySelector('#todo');
+
+  parent.removeChild(item);
+  target.insertBefore(item, target.childNodes[0]);
 }
 
 function removeList() {
