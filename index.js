@@ -55,9 +55,16 @@ function addList(value) {
   document.querySelector('#categorie').value = '';
 
   data[objectName] = {
+    active: true,
     todo: [],
     completed: [],
   }
+
+  Object.keys(data).forEach(function(list) {
+    data[list].active = false;
+  });
+
+  data[objectName].active = true;
 
   dataObjectUpdated();
   console.log(data);
@@ -114,6 +121,12 @@ function activeList() {
   } else {
     this.id = 'activeList';
   }
+
+  Object.keys(data).forEach(function(list) {
+    data[list].active = false;
+  });
+
+  data[item.innerText].active = true;
 }
 
 
@@ -158,10 +171,13 @@ function addListToDOM(text) {
 
   if (document.querySelector('#activeList')) {
     listItems.forEach(function(listItem) {
+      let listItemText = listItem.innerText;
       if (listItem.id = 'activeList') {
         listItem.id = '';
       }
     });
+    item.id = 'activeList';
+  } else {
     item.id = 'activeList';
   }
 
