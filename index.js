@@ -60,11 +60,13 @@ function isEmpty(obj) {
 
 // Check if a list is active
 function isActive(obj) {
+  let result;
   Object.keys(data).forEach(function(list) {
     if (data[list].active === true) {
-      return true;
+      result = true;
     }
   });
+  return result;
 }
 
 // Add item to list
@@ -324,8 +326,12 @@ menuButtons.forEach(function(button) {
 });
 
 panelCover.addEventListener('click', function() {
-  if (isEmpty(data)) {
-    document.querySelector('.alert').style.display = 'block';
+  if (isEmpty(data) || !isActive(data)) {
+    if (isEmpty(data)) {
+      document.querySelector('.alert').style.display = 'block';
+    } else {
+      
+    }
   } else {
     document.querySelector('.menu-panel').style.right = '-100%';
     document.querySelector('.list-panel').style.opacity = '1';
