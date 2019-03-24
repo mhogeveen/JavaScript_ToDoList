@@ -6,6 +6,7 @@ let removeIcon = '<i class="far fa-trash-alt"></i>';
 let completeIcon = '<i class="fas fa-check"></i>';
 
 renderLists();
+renderTodo();
 
 // If there is any text inside the item field, add that text to the todo list of it's own list object
 // User clicked on the add button
@@ -41,6 +42,9 @@ document.querySelector('#categorie').addEventListener('keydown', function(event)
   let value = this.value;
   if (event.code === 'Enter' && value) {
     addList(value);
+  }
+  if (!isEmpty()) {
+    document.querySelector('.alert').style.display = 'none';
   }
 });
 
@@ -79,7 +83,34 @@ function addList(value) {
 }
 
 function renderTodo() {
+  Object.keys(data).forEach(function(list) {
+    if (data[list].active === true) {
+      if (!data[list].todo.length && !data[list].completed.length) return;
 
+      for (let i = 0; i < data[list].todo.length; i++) {
+        let value = data[list].todo[i];
+        addItemToDOM(value);
+      }
+
+      for (let j = 0; j < data[list].completed.length; j++) {
+        let value = data[list].completed[j];
+        addItemToDOM(value, true);
+      }
+    }
+  });
+}
+
+function unrenderTodo() {
+  let todo = document.querySelector('#todo');
+  let completed = document.querySelector('#completed');
+
+  while (todo.firstChild) {
+    todo.removeChild(todo.firstChild);
+  }
+
+  while (completed.firstChild) {
+    completed.removeChild(completed.firstChild);
+  }
 }
 
 function renderLists() {
@@ -160,6 +191,7 @@ function removeList() {
 
 // Change id of clicked list item to activeList
 function activeList() {
+
   let item = this;
   let hasID = document.querySelector('#activeList');
 
@@ -175,6 +207,9 @@ function activeList() {
   });
 
   data[item.innerText].active = true;
+
+  unrenderTodo();
+  renderTodo();
 }
 
 
