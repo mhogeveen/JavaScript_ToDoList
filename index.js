@@ -58,6 +58,15 @@ function isEmpty(obj) {
   return Object.keys(data).length === 0;
 }
 
+// Check if a list is active
+function isActive(obj) {
+  Object.keys(data).forEach(function(list) {
+    if (data[list].active === true) {
+      return true;
+    }
+  });
+}
+
 // Add item to list
 function addItem(value) {
   addItemToDOM(value);
@@ -92,7 +101,6 @@ function addList(value) {
   data[objectName].active = true;
 
   dataObjectUpdated();
-  unrenderTodo();
 }
 
 // Remove item from list
@@ -182,6 +190,7 @@ function activeList() {
 
   unrenderTodo();
   renderTodo();
+  dataObjectUpdated();
 }
 
 // Adds a new item to the todo list
@@ -223,16 +232,13 @@ function addListToDOM(text) {
   let item = document.createElement('li');
   item.innerText = text;
 
-  if (document.querySelector('#activeList')) {
-    listItems.forEach(function(listItem) {
-      let listItemText = listItem.innerText;
-      if (listItem.id = 'activeList') {
-        listItem.id = '';
-      }
-    });
-    item.id = 'activeList';
-  } else {
-    item.id = 'activeList';
+  let itemText = item.innerText;
+  if (data[itemText]) {
+    if (data[itemText].active === true) {
+      item.id = 'activeList';
+    } else {
+
+    }
   }
 
   let button = document.createElement('div');
@@ -289,17 +295,11 @@ function unrenderTodo() {
 
 // Render lists
 function renderLists() {
-  if (!Object.keys(data).length) return;
+  if (isEmpty(data)) return;
 
   for (let i = 0; i < Object.keys(data).length; i++) {
-    if (i === Object.keys(data).length - 1) {
-      let value = Object.keys(data)[i];
-      data[value].active = true;
-      addListToDOM(value);
-    } else {
-      let value = Object.keys(data)[i];
-      addListToDOM(value);
-    }
+    let value = Object.keys(data)[i];
+    addListToDOM(value);
   }
 }
 
