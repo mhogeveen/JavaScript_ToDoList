@@ -79,7 +79,7 @@ function addList(value) {
   data[objectName].active = true;
 
   dataObjectUpdated();
-  console.log(data);
+  unrenderTodo();
 }
 
 function renderTodo() {
