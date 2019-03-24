@@ -47,6 +47,14 @@ document.querySelector('#categorie').addEventListener('keydown', function(event)
 function addItem(value) {
   addItemToDOM(value);
   document.querySelector('#item').value = '';
+
+  Object.keys(data).forEach(function(list) {
+    if (data[list].active === true) {
+      data[list].todo.push(value);
+    }
+  });
+
+  console.log(data);
 }
 
 function addList(value) {
@@ -88,7 +96,31 @@ function dataObjectUpdated() {
 }
 
 function removeItem() {
+  let item = this.parentNode.parentNode;
+  let parent = item.parentNode;
+  let id = parent.id;
+  let value = item.innerText;
 
+  Object.keys(data).forEach(function(list) {
+    if (data[list].active === true) {
+      if (id === 'todo') {
+        data[list].todo.splice(data[list].todo.indexOf(value), 1);
+      } else {
+        data[list].completed.splice(data[list].completed.indexOf(value), 1);
+      }
+    }
+  });
+
+  dataObjectUpdated();
+
+  parent.removeChild(item);
+}
+
+function completeItem() {
+  let item = this.parentNode.parentNode;
+  let parent = item.parentNode;
+  let id = parent.id;
+  let value = item.innerText;
 }
 
 function removeList() {
@@ -104,10 +136,6 @@ function removeList() {
   dataObjectUpdated();
 
   parent.removeChild(item);
-}
-
-function completeItem() {
-
 }
 
 // Change id of clicked list item to activeList
