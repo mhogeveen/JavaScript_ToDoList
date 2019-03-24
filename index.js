@@ -31,6 +31,9 @@ document.querySelector('#cat-add').addEventListener('click', function() {
   if (value) {
     addList(value);
   }
+  if (!isEmpty()) {
+    document.querySelector('.alert').style.display = 'none';
+  }
 });
 
 // User pressed the enter key
@@ -82,17 +85,29 @@ function removeItem() {
 }
 
 function removeList() {
+  let item = this.parentNode.parentNode;
+  let parent = item.parentNode;
+  let id = parent.id;
+  let value = item.innerText;
 
+  if (id === 'list') {
+    delete data[value];
+  }
+
+  dataObjectUpdated();
+
+  parent.removeChild(item);
 }
 
 function completeItem() {
 
 }
 
+// Change id of clicked list item to activeList
 function activeList() {
   let item = this;
   let hasID = document.querySelector('#activeList');
-  console.log(hasID);
+
   if (hasID) {
     hasID.id = '';
     this.id = 'activeList';
@@ -136,9 +151,19 @@ function addItemToDOM(text, completed) {
 // Adds new item to the lists list
 function addListToDOM(text) {
   let list = document.querySelector('#list');
+  let listItems = document.querySelectorAll('li');
 
   let item = document.createElement('li');
   item.innerText = text;
+
+  if (document.querySelector('#activeList')) {
+    listItems.forEach(function(listItem) {
+      if (listItem.id = 'activeList') {
+        listItem.id = '';
+      }
+    });
+    item.id = 'activeList';
+  }
 
   let button = document.createElement('div');
   button.classList.add('list__buttons');
