@@ -4,6 +4,7 @@ let data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
 // Remove and complete icons html
 let removeIcon = '<i class="far fa-trash-alt"></i>';
 let completeIcon = '<i class="fas fa-check"></i>';
+let title = document.querySelector('.title__text');
 
 renderLists();
 renderTodo();
@@ -91,6 +92,7 @@ function addList(value) {
   document.querySelector('#categorie').value = '';
 
   data[objectName] = {
+    title: value,
     active: true,
     todo: [],
     completed: [],
@@ -266,6 +268,8 @@ function renderTodo() {
   Object.keys(data).forEach(function(list) {
     if (data[list].active === true) {
       if (!data[list].todo.length && !data[list].completed.length) return;
+
+      title.innerText = data[list].title;
 
       for (let i = 0; i < data[list].todo.length; i++) {
         let value = data[list].todo[i];
