@@ -87,7 +87,7 @@ function addItem(value) {
 
 // Add list to menu
 function addList(value) {
-  addListToDOM(value);
+
   let objectName = value;
   document.querySelector('#categorie').value = '';
 
@@ -104,6 +104,9 @@ function addList(value) {
 
   data[objectName].active = true;
 
+  addListToDOM(value);
+  unrenderTodo();
+  renderTodo();
   dataObjectUpdated();
 }
 
@@ -237,9 +240,13 @@ function addListToDOM(text) {
   let item = document.createElement('li');
   item.innerText = text;
 
-  let itemText = item.innerText;
-  if (data[itemText]) {
-    if (data[itemText].active === true) {
+  let hasID = document.querySelector('#activeList');
+
+  if (data[text].active === true) {
+    if (hasID) {
+      hasID.id = '';
+      item.id = 'activeList';
+    } else {
       item.id = 'activeList';
     }
   }
