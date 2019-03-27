@@ -113,7 +113,7 @@ body {
 }
 
 .text--menu {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 600;
 }
 
@@ -183,7 +183,7 @@ body {
   &--list {
     display: none;
     right: 83px;
-    top: 78px;
+    top: 123px;
     transition: opacity 200ms ease;
     &::after {
       content: '';
@@ -201,7 +201,7 @@ body {
   &--active {
     display: none;
     left: 15px;
-    top: 91.5px;
+    top: 136.5px;
     z-index: 10;
     transition: opacity 200ms ease;
     &::after {
